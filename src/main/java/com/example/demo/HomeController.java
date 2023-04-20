@@ -24,10 +24,10 @@ public class HomeController {
 
     @GetMapping("/")
     public String home() {
-        return "home";
+        return "error";
     }
 
-    @PostMapping("/takePhoto")
+    @PostMapping("/upload")
     public String takePhoto(@RequestBody byte[] image) {
         Photo photo = new Photo();
         photo.setImage(image);
@@ -36,7 +36,7 @@ public class HomeController {
         return "redirect:/";
     }
 
-    @GetMapping("/showPhoto")
+    @GetMapping("/photo")
     public String showPhoto(Model model) {
         System.out.println(photoRepository.count());
             Optional<Photo> photo = photoRepository.findById(photoRepository.count());
